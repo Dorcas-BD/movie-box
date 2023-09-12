@@ -1,0 +1,16 @@
+.movie-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  max-width: 300px;
+}
+
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.movie-info {
+  margin-top: 10px;
+  color: #000;
+}
