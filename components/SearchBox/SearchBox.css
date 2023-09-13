@@ -1,0 +1,9 @@
+.search_box {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  padding: 5px 10px;
+  width: 50%;
+  height: 36px;
+}

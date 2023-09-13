@@ -1,8 +1,26 @@
+"use client";
 import React from "react";
+import { useState, useEffect } from "react";
 import "../styles/HomePage.css";
-import MovieCard from "@/components/MovieCard";
+import MovieCard from "@/components/MovieCard/MovieCard";
+import SearchBox from "@/components/SearchBox/SearchBox";
 
 const HomePage = () => {
+  const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=1f2d60f1c0b7a2b3b8b0a0a0e1a0a0a0&language=en-US&page=1`
+      );
+      const data = await response.json();
+      setMovies(data.results);
+    };
+    fetchMovies();
+  }, []);
+  console.log(movies);
+
   return (
     <div className="container">
       <div className="heroPage">
@@ -13,8 +31,7 @@ const HomePage = () => {
               <h2>MovieBox</h2>
             </div>
             <div className="form_search">
-              <input type="text" placeholder="What do you want to watch?" />
-              <i className="fas fa-search"></i>
+              <SearchBox searchValue={movie} setSearchValue={setSearchValue} />
             </div>
             <div className="nav_bar">
               <ul>
@@ -44,11 +61,8 @@ const HomePage = () => {
       </div>
       <div className="features">
         <div className=""></div>
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        <MovieCard movies={movies} />
       </div>
-
       <div className="footer"></div>
     </div>
   );
