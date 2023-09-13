@@ -4,21 +4,49 @@ import { useState, useEffect } from "react";
 import "../styles/HomePage.css";
 import MovieCard from "@/components/MovieCard/MovieCard";
 import SearchBox from "@/components/SearchBox/SearchBox";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchPopularMovies = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=1f2d60f1c0b7a2b3b8b0a0a0e1a0a0a0&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/popular?api_key=85b27a45d9bec629452daa02247b315c&language=en-US&page=1`
       );
       const data = await response.json();
       setMovies(data.results);
     };
-    fetchMovies();
+
+    fetchPopularMovies();
   }, []);
+
+  const fetchSearchResults = async () => {
+    if (searchValue.trim() === "") {
+      // Don't make the API request if the search input is empty
+      setSearchResults([]);
+      return;
+    }
+
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=85b27a45d9bec629452daa02247b315c&language=en-US&query=${encodeURIComponent(
+        searchValue
+      )}&page=1`
+    );
+
+    const data = await response.json();
+    setSearchResults(data.results);
+  };
+
+  // Use effect to fetch search results when searchValue changes
+  useEffect(() => {
+    fetchSearchResults();
+  }, [searchValue]);
+
   console.log(movies);
 
   return (
@@ -31,7 +59,10 @@ const HomePage = () => {
               <h2>MovieBox</h2>
             </div>
             <div className="form_search">
-              <SearchBox searchValue={movie} setSearchValue={setSearchValue} />
+              <SearchBox
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+              />
             </div>
             <div className="nav_bar">
               <ul>
@@ -60,8 +91,12 @@ const HomePage = () => {
         </div>
       </div>
       <div className="features">
-        <div className=""></div>
-        <MovieCard movies={movies} />
+        {/* Display movies based on search results or popular movies */}
+        {searchValue.trim() === "" ? (
+          <MovieCard movies={movies} />
+        ) : (
+          <MovieCard movies={searchResults} />
+        )}
       </div>
       <div className="footer"></div>
     </div>
