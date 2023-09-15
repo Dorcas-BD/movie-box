@@ -33,7 +33,7 @@ const HomePage = () => {
     }
 
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=85b27a45d9bec629452daa02247b315c&language=en-US&query=${encodeURIComponent(
+      `https://api.themoviedb.org/3/search/movie?api_key=85b27a45d9bec629452daa02247b315c&language=en-US&query=${encodeURIComponent(
         searchValue
       )}&page=1`
     );
