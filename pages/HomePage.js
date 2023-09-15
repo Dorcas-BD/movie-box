@@ -46,8 +46,6 @@ const HomePage = () => {
     fetchSearchResults();
   }, [searchValue]);
 
-  console.log(movies);
-
   return (
     <div className="container">
       <div className="heroPage">
@@ -76,7 +74,9 @@ const HomePage = () => {
           <h1 className="main_title">John Wick 3 : Parabellum</h1>
           <div className="rating">
             <img src="imdb.svg" />
-            <p>86.0/100 97%</p>
+            <p>86.0/100</p>
+            <img src="orange.svg" />
+            <p> 97%</p>
           </div>
           <p className="main_text">
             John Wick is on the run after killing a member of the international
