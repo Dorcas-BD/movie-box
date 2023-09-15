@@ -1,7 +1,20 @@
 .movie-card {
-  display: flex;
-  justify-content: center;
   color: #000;
+}
+.features_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.features_title p {
+  color: #be123c;
+  margin-top: 15px;
+}
+
+.features_title h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0 20px;
 }
 
 .movie-list-grid {
@@ -30,21 +43,21 @@
   }
 }
 .movie-title {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   margin: 10px 0;
   text-align: center;
 }
 .movie-item {
   background-color: #f5f5f5;
-  padding: 20px;
+  padding: 15px 10px;
   border-radius: 8px;
 }
 
 .moviee {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
 }
 
@@ -62,6 +75,15 @@
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+
+.vote,
+.vote-rate {
+  display: flex;
+}
+
+.vote {
+  padding-right: 25px;
 }
 
 .favorite-button {
