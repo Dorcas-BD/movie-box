@@ -1,0 +1,49 @@
+.footer {
+  margin-top: 10px;
+  background-color: #fff;
+}
+.f-container {
+  max-width: 1000px;
+  margin: auto;
+}
+.f-one {
+  display: flex;
+  column-gap: 22px;
+  max-width: 210px;
+  margin: auto;
+}
+.f-two {
+  display: flex;
+  column-gap: 32px;
+  max-width: 450px;
+  margin: auto;
+  padding: 15px 0;
+}
+.f-two p {
+  color: #111827;
+}
+.f-three {
+  max-width: 350px;
+  margin: auto;
+}
+.f-three p {
+  color: #6b7280;
+}
+
+.f-one i {
+  color: #000;
+  font-size: 25px;
+}
+@media screen and (max-width: 768px) {
+  .f-container {
+    margin-left: 3px;
+  }
+  .f-two p {
+    font-size: 11px;
+    margin-left: 5px;
+  }
+  .f-three p {
+    font-size: 13px;
+    margin-left: 18px;
+  }
+}
