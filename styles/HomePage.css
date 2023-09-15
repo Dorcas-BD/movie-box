@@ -102,7 +102,14 @@ li a {
 
 .features {
   position: relative;
-  top: 750px;
+  top: 720px;
+}
+
+.footer {
+  position: relative;
+  top: 350px;
+  background-color: #fff;
+  padding: 20px 0;
 }
 
 @media screen and (max-width: 868px) {

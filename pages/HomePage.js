@@ -5,6 +5,7 @@ import "../styles/HomePage.css";
 import MovieCard from "@/components/MovieCard/MovieCard";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import dotenv from "dotenv";
+import Footer from "./Footer";
 
 dotenv.config();
 
@@ -27,7 +28,6 @@ const HomePage = () => {
 
   const fetchSearchResults = async () => {
     if (searchValue.trim() === "") {
-      // Don't make the API request if the search input is empty
       setSearchResults([]);
       return;
     }
@@ -42,7 +42,6 @@ const HomePage = () => {
     setSearchResults(data.results);
   };
 
-  // Use effect to fetch search results when searchValue changes
   useEffect(() => {
     fetchSearchResults();
   }, [searchValue]);
@@ -91,14 +90,15 @@ const HomePage = () => {
         </div>
       </div>
       <div className="features">
-        {/* Display movies based on search results or popular movies */}
         {searchValue.trim() === "" ? (
           <MovieCard movies={movies} />
         ) : (
           <MovieCard movies={searchResults} />
         )}
       </div>
-      <div className="footer"></div>
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 };
