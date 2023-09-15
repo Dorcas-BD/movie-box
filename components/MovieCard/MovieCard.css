@@ -75,9 +75,10 @@
   background-color: #ccc;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: none;
+  outline: none;
 }
 
 .favorite-button.active {
   color: red;
-  border: none;
 }

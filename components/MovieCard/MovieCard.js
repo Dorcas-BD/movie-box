@@ -54,7 +54,11 @@ const MovieCard = ({ movies }) => {
                 }
                 onClick={() => toggleFavorite(index)}
               >
-                {favoriteStatus[index] ? "❤️" : "🤍"}
+                {favoriteStatus[index] ? (
+                  <span>&#x2764;</span>
+                ) : (
+                  <span>&#x1F90D;</span>
+                )}
               </button>
             </div>
           </div>
