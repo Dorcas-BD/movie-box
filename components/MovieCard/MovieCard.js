@@ -16,7 +16,7 @@ const MovieCard = ({ movies }) => {
           "https://api.themoviedb.org/3/genre/movie/list",
           {
             params: {
-              api_key: "85b27a45d9bec629452daa02247b315c", // Replace with your TMDb API key
+              api_key: "85b27a45d9bec629452daa02247b315c",
             },
           }
         );
