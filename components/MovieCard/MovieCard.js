@@ -50,14 +50,14 @@ const MovieCard = ({ movies }) => {
   const displayedMovies = movies.slice(0, 10);
 
   return (
-    <div className="movie-card" data-testid="movie-card">
+    <div className="movie-card">
       <div className="features_title">
         <h2>Featured Movie</h2>
         <p>See More &gt;</p>
       </div>
       <div className="movie-list-grid">
         {displayedMovies.map((movie, index) => (
-          <div key={index} className="movie-item">
+          <div key={index} className="movie-item" data-testid="movie-card">
             <div className="moviee">
               <Link href={`/movies/${movie.id}`}>
                 <img
