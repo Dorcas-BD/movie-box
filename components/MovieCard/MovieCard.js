@@ -40,11 +40,7 @@ const MovieCard = ({ movies }) => {
   };
 
   if (!movies || movies.length === 0) {
-    return (
-      <div className="movie-card" data-testid="movie-card">
-        No movies to display.
-      </div>
-    );
+    return <div className="movie-card">No movies to display.</div>;
   }
 
   const displayedMovies = movies.slice(0, 10);
