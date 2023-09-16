@@ -1,14 +1,22 @@
-# Movie Box Web Application
+This is a [Next.js](https://nextjs.org/) project
 
-This project is a simple web application that allows users to browse and view movie details, including trailers, release date, runtime, genres, and more. Users can also mark movies as favorites.
+## Getting Started
 
-## Features
+First, run the development server:
 
-- **Movie Listing**: Displays a list of movies along with key information like title, release date, rating, and genre.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-- **Movie Details**: Allows users to click on a movie to view its detailed information, including the trailer, release date, runtime, genres, directors, writers, stars, and overview.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- **Favorite Movies**: Users can mark movies as favorites, and the application will indicate which movies have been favorited.
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Technologies Used
 
