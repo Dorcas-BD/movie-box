@@ -8,6 +8,26 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [trailerVideoId, setTrailerVideoId] = useState(null);
+  const [genre, setGenre] = useState("");
+  const [rating, setRating] = useState("");
+  const [directors, setDirectors] = useState([]);
+  const [writers, setWriters] = useState([]);
+  const [stars, setStars] = useState([]);
+
+  const formatGenre = () => {
+    if (movie && movie.genres) {
+      const genreNames = movie.genres.map((genre) => genre.name);
+      return genreNames.join(", ");
+    }
+    return "";
+  };
+
+  const formatRating = () => {
+    if (movie && movie.vote_average) {
+      return `${movie.vote_average}/10`;
+    }
+    return "";
+  };
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -49,14 +69,44 @@ const MovieDetails = () => {
       }
     };
 
+    const fetchCredits = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${id}/credits`,
+          {
+            params: {
+              api_key: "85b27a45d9bec629452daa02247b315c",
+            },
+          }
+        );
+
+        const directorList = response.data.crew.filter(
+          (member) => member.job === "Director"
+        );
+        setDirectors(directorList.map((director) => director.name));
+
+        const writerList = response.data.crew.filter(
+          (member) => member.department === "Writing"
+        );
+        setWriters(writerList.map((writer) => writer.name));
+
+        const topStars = response.data.cast.slice(0, 5);
+        setStars(topStars.map((star) => star.name));
+      } catch (error) {
+        console.error("Error fetching credits:", error);
+      }
+    };
+
     if (id) {
       fetchMovieDetails();
-    }
-
-    if (movie) {
-      fetchTrailer();
+      fetchCredits();
     }
   }, [id, movie]);
+
+  useEffect(() => {
+    setGenre(formatGenre());
+    setRating(formatRating());
+  }, [movie]);
 
   return (
     <div className="container">
@@ -77,10 +127,15 @@ const MovieDetails = () => {
       <div>
         {movie ? (
           <div>
-            <h2 data-testid="movie-title">Title: {movie.title}</h2>
+            <h2 data-testid="movie-title"> {movie.title}</h2>
             <p data-testid="movie-release-date">{movie.release_date}</p>
             <p data-testid="movie-runtime">{movie.runtime}</p>
+            <p>Genre: {genre}</p>
+            <p>Rating: {rating}</p>
             <p data-testid="movie-overview"> {movie.overview}</p>
+            <p>Directors: {directors.join(", ")}</p>
+            <p>Writers: {writers.join(", ")}</p>
+            <p>Stars: {stars.join(", ")}</p>
           </div>
         ) : (
           <div>Loading...</div>
