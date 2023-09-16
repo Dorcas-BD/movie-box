@@ -54,8 +54,8 @@ const MovieCard = ({ movies }) => {
       <div className="movie-list-grid">
         {displayedMovies.map((movie, index) => (
           <div key={index} className="movie-item" data-testid="movie-card">
-            <div className="moviee">
-              <Link href={`/movies/${movie.id}`}>
+            <Link href={`/movies/${movie.id}`}>
+              <div className="moviee">
                 <img
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                   alt="movie"
@@ -75,26 +75,26 @@ const MovieCard = ({ movies }) => {
                     <p>{movie.popularity}%</p>
                   </div>
                 </div>
-              </Link>
-              <p>
-                {" "}
-                {movie.genre_ids.map((genreId) => genres[genreId]).join(", ")}
-              </p>
-              <button
-                className={
-                  favoriteStatus[index]
-                    ? "favorite-button active"
-                    : "favorite-button"
-                }
-                onClick={() => toggleFavorite(index)}
-              >
-                {favoriteStatus[index] ? (
-                  <span>&#x2764;</span>
-                ) : (
-                  <span>&#x1F90D;</span>
-                )}
-              </button>
-            </div>
+                <p>
+                  {" "}
+                  {movie.genre_ids.map((genreId) => genres[genreId]).join(", ")}
+                </p>
+                <button
+                  className={
+                    favoriteStatus[index]
+                      ? "favorite-button active"
+                      : "favorite-button"
+                  }
+                  onClick={() => toggleFavorite(index)}
+                >
+                  {favoriteStatus[index] ? (
+                    <span>&#x2764;</span>
+                  ) : (
+                    <span>&#x1F90D;</span>
+                  )}
+                </button>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
