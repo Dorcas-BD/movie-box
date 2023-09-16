@@ -29,6 +29,14 @@ const MovieDetails = () => {
     return "";
   };
 
+  const formatDateToUTC = (dateString) => {
+    const localDate = new Date(dateString);
+    const utcDate = new Date(
+      localDate.getTime() + localDate.getTimezoneOffset() * 60000
+    );
+    return utcDate.toISOString();
+  };
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -128,7 +136,9 @@ const MovieDetails = () => {
         {movie ? (
           <div>
             <h2 data-testid="movie-title"> {movie.title}</h2>
-            <p data-testid="movie-release-date">{movie.release_date}</p>
+            <p data-testid="movie-release-date">
+              {formatDateToUTC(movie.release_date)}
+            </p>
             <p data-testid="movie-runtime">{movie.runtime}</p>
             <p>Genre: {genre}</p>
             <p>Rating: {rating}</p>
