@@ -135,17 +135,15 @@ const MovieDetails = () => {
       <div>
         {movie ? (
           <div>
-            <h2 data-testid="movie-title"> {movie.title}</h2>
-            <p data-testid="movie-release-date">
-              {formatDateToUTC(movie.release_date)}
-            </p>
+            <h2 data-testid="movie-title">{movie.title}</h2>
+            <p data-testid="movie-release-date">{formatDateToUTC(movie.release_date)}</p>
             <p data-testid="movie-runtime">{movie.runtime}</p>
-            <p>Genre: {genre}</p>
-            <p>Rating: {rating}</p>
-            <p data-testid="movie-overview"> {movie.overview}</p>
-            <p>Directors: {directors.join(", ")}</p>
-            <p>Writers: {writers.join(", ")}</p>
-            <p>Stars: {stars.join(", ")}</p>
+            <p>Genre:{genre}</p>
+            <p>Rating:{rating}</p>
+            <p data-testid="movie-overview">{movie.overview}</p>
+            <p>Directors:{directors.join(", ")}</p>
+            <p>Writers:{writers.join(", ")}</p>
+            <p>Stars:{stars.join(", ")}</p>
           </div>
         ) : (
           <div>Loading...</div>
