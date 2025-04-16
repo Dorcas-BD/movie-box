@@ -25,7 +25,7 @@ const Footer = () => {
           <p>Press Room</p>
         </div>
         <div className="f-three">
-          <p>&copy; 2021 MovieBox by Adriana Eka Prayudha </p>
+          <p>&copy; 2026 MovieBox by Dorcas Bamisile </p>
         </div>
       </div>
     </div>

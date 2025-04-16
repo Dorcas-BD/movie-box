@@ -56,10 +56,13 @@ const HomePage = () => {
               <h2>MovieBox</h2>
             </div>
             <div className="form_search">
-              <SearchBox
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-              />
+           
+              <input
+        type="text"
+        value={searchValue} 
+        onChange={(event) => props.setSearchValue(event.target.value)}
+        placeholder="Search for movies here..."
+      />
             </div>
             <div className="nav_bar">
               <ul>
