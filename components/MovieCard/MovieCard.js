@@ -61,14 +61,12 @@ const MovieCard = ({ movies }) => {
                   alt="movie"
                   data-testid="movie-poster"
                 />
-                <p data-testid="movie-release-date"> {movie.release_date}</p>
-                <h2 className="movie-title" data-testid="movie-title">
-                  {movie.title}
-                </h2>
+                <p data-testid="movie-release-date">{movie.release_date}</p>
+                <h2 className="movie-title" data-testid="movie-title">{movie.title}</h2>
                 <div className="rating">
                   <div className="vote">
                     <img src="imdb.svg" alt="IMDB Logo" />
-                    <p> {movie.vote_average}/10</p>
+                    <p>{movie.vote_average}/10</p>
                   </div>
                   <div className="vote-rate">
                     <img src="orange.svg" />
